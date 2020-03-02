@@ -16,6 +16,7 @@ class CPie:
         # hyper parameters
         self._Ns = 7 * self._dimension if not Ns else Ns
         self._alpha = 1.0 / (1.0 + self._dimension)
+        self._epsilon = 0.5
         self._rho = 1.6
         self._zeta = 0.6
         self._phi_max = math.pi / 18.0
@@ -75,6 +76,8 @@ class CPie:
     def _select_enclosure(self):
         if len(self._enclosures) == 1:
             selected = self._enclosures[0]
+        elif np.random.random() < self._epsilon:
+            selected = np.random.choice(self._enclosures, size=1)[0]
         else:
             selected = self._select_promising_enclosure()
         selected.add_t_count()
