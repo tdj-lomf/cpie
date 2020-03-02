@@ -86,11 +86,11 @@ class Enclosure:
         # define worse set and better set
         average1, average2 = [sum(s.f for s in c)/len(c) for c in (class1, class2)]
         if average1 < average2:
-            worse  = (class1, ellipsoid1, average1)
-            better = (class2, ellipsoid2, average2)
-        else:
             better = (class1, ellipsoid1, average1)
             worse  = (class2, ellipsoid2, average2)
+        else:
+            worse  = (class1, ellipsoid1, average1)
+            better = (class2, ellipsoid2, average2)
         # add new enclosure with worse set
         worse_enclosure = Enclosure(alpha, solutions=worse[0], ellipsoid=worse[1])
         enclosures.append(worse_enclosure)
