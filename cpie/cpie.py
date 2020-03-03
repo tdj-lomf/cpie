@@ -1,8 +1,8 @@
 import math
 import numpy as np
 
-from enclosure import Enclosure
-from solution import Solution
+from .enclosure import Enclosure
+from .solution import Solution
 
 
 class CPie:

@@ -1,10 +1,10 @@
 import copy
 import math
 import numpy as np
-from ellipsoid import Ellipsoid
-from solution import Solution
-from helper import mean_and_covariance
-from helper import k_means_mahalanobis
+from .ellipsoid import Ellipsoid
+from .solution import Solution
+from .helper import mean_and_covariance
+from .helper import k_means_mahalanobis
 
 
 class Enclosure:

@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from helper import mean_and_covariance
+from .helper import mean_and_covariance
 
 class Ellipsoid:
 

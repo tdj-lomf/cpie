@@ -1,4 +1,4 @@
-from cpie import CPie
+from cpie.cpie import CPie
 
 
 def sphere(x):
@@ -6,7 +6,6 @@ def sphere(x):
 
 def objective_func(x):
     return min(sphere(x-2)+0.1, 10*sphere(x+2))
-
 
 
 if __name__ == "__main__":
