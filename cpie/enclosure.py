@@ -26,6 +26,9 @@ class Enclosure:
         self._worst = max(s.f for s in self.solutions)
         self._normal_sample = True
 
+    def get_best(self):
+        return min(self.solutions, key=lambda s: s.f)
+
     def sample(self, q, phi_max):
         self._normal_sample = self._q_count < q or self.dimension == 1
         if self._normal_sample:
@@ -110,7 +113,7 @@ class Enclosure:
     
     def calc_improvement_rate(self, best):
         self.improvement_rate = (self._average_history[0] - best) / (self._average - best)
-
+    
     def _update_solutions(self, f_value, Ns, u):
         if f_value >= self._worst:
             return

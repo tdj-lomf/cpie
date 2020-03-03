@@ -19,5 +19,9 @@ if __name__ == "__main__":
         f_value = objective_func(solution)
         cpie.update(f_value)
         cpie.print()
-    print("best x", cpie.best.x)
-    print("best f", cpie.best.f)
+
+    print("global best x", cpie.best.x)
+    print("global best f", cpie.best.f)
+    bests = cpie.get_bests()
+    for i, b in enumerate(bests):
+        print("mode", i, " f", b.f)

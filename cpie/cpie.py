@@ -72,6 +72,9 @@ class CPie:
 
     def print(self):
         print("iter:", self.iteration, "f:", self._f_value, "f_best:", self.best.f, "num mode:", len(self._enclosures))
+    
+    def get_bests(self):
+        return [e.get_best() for e in self._enclosures]
 
     def _select_enclosure(self):
         if len(self._enclosures) == 1:
