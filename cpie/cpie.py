@@ -7,7 +7,7 @@ from .solution import Solution
 
 class CPie:
 
-    def __init__(self, bounds_min, bounds_max, Ns=None):
+    def __init__(self, bounds_min, bounds_max, Ns=None, options={}):
         # problem settings
         self._dimension = len(bounds_min)
         self._bounds_min = np.array([b_min for b_min in bounds_min])
@@ -24,6 +24,13 @@ class CPie:
         self._q = 3
         self._o = 10
         self._u = 5
+
+        # additional options
+        self._options = {
+            'max_mode': None,   # Max number of dividing enclosure, that is, number of final best solutions <= 'max_mode'.
+        }
+        for key, value in options.items():
+            self._options[key] = value
 
         # inner states
         self._enclosures = []
@@ -58,17 +65,16 @@ class CPie:
                     self._enclosures.append(enclosure)
         else:
             self._current_enclosure.update(f_value, self._Ns, self._alpha, self._p, self._u)
-
         if not self.best or f_value < self.best.f:
             self.best = Solution(self._sample.copy(), f_value)
-
+        
+        # merge/divide enclosure
         if not self._current_enclosure:
             return
-
         if self._current_enclosure.merge(self._enclosures, self._Ns, self._zeta, self._alpha):
             return
-
-        self._current_enclosure.divide(self._enclosures, self._o, self._rho, self._alpha)
+        if not self._options['max_mode'] or len(self._enclosures) < self._options['max_mode']:
+            self._current_enclosure.divide(self._enclosures, self._o, self._rho, self._alpha)
 
     def print(self):
         print("iter:", self.iteration, "f:", self._f_value, "f_best:", self.best.f, "num mode:", len(self._enclosures))
