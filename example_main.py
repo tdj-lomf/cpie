@@ -5,7 +5,7 @@ def sphere(x):
     return sum(xi*xi for xi in x)
 
 def objective_func(x):
-    return min(sphere(x-2)+0.1, 10*sphere(x+2))
+    return min(sphere(x-2)+0.1, 10*sphere(x+2), sphere(x+4)+0.05)
 
 
 if __name__ == "__main__":
