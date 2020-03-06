@@ -168,8 +168,8 @@ class CPie:
             if len(e._average_history) < self._u:
                 return e
         # select by improvement rate
-        estimated_best = min(e.next_sample_estimation()
-                             for e in self._enclosures)
+        estimated_next_best = min(e.next_sample_estimation() for e in self._enclosures)
+        estimated_best = min(estimated_next_best, self.best.f)
         for e in self._enclosures:
             e.calc_improvement_rate(estimated_best)
         return max(self._enclosures, key=lambda e: e.improvement_rate)
