@@ -1,4 +1,4 @@
-from cpie.cpie import CPie
+from cpie import CPie
 
 
 def sphere(x):

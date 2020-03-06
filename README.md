@@ -6,12 +6,15 @@ UV-function has U-valley, which occupies large search space but  contains only l
 e.g. Double-sphere: f(x) = min((x-2)^2 + 0.1, 10*(x+2)^2)  
 
 # Installation
-
+```
+$ pip install cpie
+```
+CPIE depends on numpy, so please install numpy if needed.
 
 # Example of usage
 First, you can import CPIE module as below.  
 ```python
-    from cpie.cpie import CPie
+    from cpie import CPie
 ```
 
 Then, you need to prepare objective function to be minimized.  
